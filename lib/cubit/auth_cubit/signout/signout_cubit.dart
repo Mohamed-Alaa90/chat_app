@@ -5,21 +5,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'signout_state.dart';
 
 class SignoutCubit extends Cubit<SignoutState> {
-  final SignOutRepository _signOutRepository;
-  SignoutCubit(this._signOutRepository) : super(SignoutInitial());
+  final SignOutRepository repository;
+
+  SignoutCubit(this.repository) : super(SignoutInitial());
 
   Future<void> signOut() async {
-    emit(SignOutloading());
-
     try {
-      await _signOutRepository.signOut();
+      print("🔹 Cubit: محاولة تسجيل الخروج...");
+      emit(SignOutloading());
+      await repository.signOut();
+      print("✅ Cubit: تسجيل الخروج بنجاح");
       emit(SignOutSuccess());
     } catch (e) {
-      emit(
-        SignOutError(
-          errorMessage: e.toString().replaceFirst('Exception: ', ''),
-        ),
-      );
+      print("❌ Cubit: فشل تسجيل الخروج: ${e.toString()}");
+      emit(SignOutError(errorMessage: "فشل تسجيل الخروج"));
     }
   }
 }

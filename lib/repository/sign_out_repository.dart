@@ -5,8 +5,11 @@ class SignOutRepository {
 
   Future<void> signOut() async {
     try {
+      print("🔹 محاولة تسجيل الخروج...");
       await _auth.signOut();
+      print("✅ تم تسجيل الخروج بنجاح!");
     } catch (e) {
+      print("❌ فشل تسجيل الخروج: ${e.toString()}");
       throw Exception("فشل تسجيل الخروج: ${e.toString()}");
     }
   }

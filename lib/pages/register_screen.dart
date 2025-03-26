@@ -1,5 +1,6 @@
 import 'package:chat_app/cubit/auth_cubit/register/register_cubit.dart';
 import 'package:chat_app/pages/login_screen.dart';
+import 'package:chat_app/pages/my_home_page.dart';
 import 'package:chat_app/theme/app_text_theme.dart';
 import 'package:chat_app/widget/dialog_widget.dart';
 import 'package:chat_app/widget/filled_buttom_edit.dart';
@@ -43,13 +44,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
           if (state is RegisterError) {
             showErrorDialog(context, state.errorMessage);
           } else if (state is RegisterSuccess) {
-            showSuccessDialog(context, () {
-              Get.off(
-                transition: Transition.rightToLeftWithFade,
-                const LoginScreen(),
-              );
-            },'تم انشاء الحساب بنجاح');
+            showSuccessDialog(context, () {}, 'تم انشاء الحساب بنجاح');
           }
+          Get.offAll(transition: Transition.fade, MyHomePage());
         },
         child: SafeArea(
           child: GestureDetector(

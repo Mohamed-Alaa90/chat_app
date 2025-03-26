@@ -45,8 +45,9 @@ class _LoginScreenState extends State<LoginScreen> {
           }
           if (state is LoginSucsses) {
             showSuccessDialog(context, () {
-              Get.off(transition: Transition.rightToLeftWithFade, MyHomePage());
+              Future.delayed(const Duration(milliseconds: 500), () {});
             }, 'تم تسجيل الدخول بنجاح');
+            Get.offAll(MyHomePage());
           }
         },
         child: SafeArea(

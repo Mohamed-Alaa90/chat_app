@@ -20,9 +20,7 @@ class LoginCubit extends Cubit<LoginState> {
         emit(LoginError(errorMessage: user.toString()));
       }
     } catch (e) {
-      emit(
-        LoginError(errorMessage: e.toString().replaceFirst('Exception: ', '')),
-      );
+      emit(LoginError(errorMessage: e.toString()));
     }
   }
 }
