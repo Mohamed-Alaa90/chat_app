@@ -1,5 +1,4 @@
 import 'package:chat_app/cubit/auth_cubit/register/register_cubit.dart';
-import 'package:chat_app/pages/login_screen.dart';
 import 'package:chat_app/pages/my_home_page.dart';
 import 'package:chat_app/theme/app_text_theme.dart';
 import 'package:chat_app/widget/dialog_widget.dart';

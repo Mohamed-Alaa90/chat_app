@@ -14,7 +14,7 @@ import 'package:chat_app/theme/theme.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart'hide Transition;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
@@ -67,6 +67,7 @@ class _MyAppState extends State<MyApp> {
       splitScreenMode: true,
       builder:
           (context, child) => GetMaterialApp(
+            debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
             theme: DarkTheme.theme,
             initialRoute: AuthGet.route,
@@ -75,7 +76,7 @@ class _MyAppState extends State<MyApp> {
               LoginOrRegister.route: (context) => const LoginOrRegister(),
               MyHomePage.route: (context) => MyHomePage(),
               RegisterScreen.route: (context) => const RegisterScreen(),
-              LoginScreen.route: (context) => const LoginScreen(),
+              LoginScreen.route: (context) =>  const LoginScreen(),
             },
           ),
     );

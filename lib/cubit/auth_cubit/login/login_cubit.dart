@@ -7,6 +7,7 @@ part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   final LoginRepository _loginRepository;
+
   LoginCubit(this._loginRepository) : super(LoginInitial());
 
   Future<void> signIn(String email, String password) async {

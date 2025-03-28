@@ -50,4 +50,13 @@ class LoginRepository {
         return "حدث خطأ غير متوقع، حاول مرة أخرى";
     }
   }
+
+
+
+  User? getCurrentUser() {
+  User? user = FirebaseAuth.instance.currentUser;
+  print("تم تسجيل الدخول كمستخدم: ${user?.email}");
+  return user;
+}
+
 }

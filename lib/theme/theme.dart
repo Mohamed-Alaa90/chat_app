@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DarkTheme {
-  static const Color primaryColor = Color(0xFF1E1E2C); // لون رئيسي داكن
-  static const Color secondaryColor = Color(0xFFBB86FC); // لون بنفسجي مميز
-  static const Color accentColor = Color(0xFF03DAC6); // لون أكوا مضيء
-  static const Color backgroundColor = Color(0xFF121212); // لون الخلفية الأساسي
-  static const Color cardColor = Color(0xFF1E1E2C); // لون الكروت
-  static const Color textColor = Colors.white; // لون النصوص
-  static const Color iconColor = Colors.white70; // لون الأيقونات
+  // 🎨 لوحة ألوان حديثة
+  static const Color primaryColor = Color(0xFF1F2937); // لون رئيسي داكن أنيق
+  static const Color secondaryColor = Color(0xFF374151); // لون ثانوي رمادي غامق
+  static const Color accentColor = Color(0xFF4ADE80); // لون أكوا أخضر مشرق
+  static const Color backgroundColor = Color(0xFF111827); // خلفية سوداء مزرقّة
+  static const Color surfaceColor = Color(0xFF1E293B); // لون الكروت والعناصر
+  static const Color textColor = Color(0xFFE5E7EB); // لون النصوص رمادي فاتح
+  static const Color iconColor = Color(0xFF9CA3AF); // لون الأيقونات رمادي فاتح
 
   static ThemeData get theme => ThemeData(
         brightness: Brightness.dark,
+        useMaterial3: true, // ✅ دعم Material 3
         primaryColor: primaryColor,
         scaffoldBackgroundColor: backgroundColor,
         colorScheme: const ColorScheme.dark().copyWith(
@@ -19,26 +21,61 @@ class DarkTheme {
           secondary: secondaryColor,
           background: backgroundColor,
           onBackground: textColor,
-          surface: cardColor,
+          surface: surfaceColor,
           onSurface: textColor,
+          tertiary: accentColor,
         ),
-        fontFamily: GoogleFonts.nunitoSans().fontFamily,
-        bottomAppBarTheme: const BottomAppBarTheme(color: backgroundColor),
-        iconTheme: const IconThemeData(color: iconColor),
-        cardTheme: const CardTheme(color: cardColor),
-        appBarTheme: const AppBarTheme(
+        fontFamily: GoogleFonts.manrope().fontFamily, // ✅ خط أنيق وحديث
+
+        // ✅ تخصيص الـ AppBar
+        appBarTheme: AppBarTheme(
           backgroundColor: primaryColor,
+          elevation: 3,
           iconTheme: IconThemeData(color: textColor),
-          titleTextStyle: TextStyle(
+          titleTextStyle: GoogleFonts.manrope(
             color: textColor,
-            fontSize: 20,
+            fontSize: 22,
             fontWeight: FontWeight.bold,
           ),
         ),
+
+        // ✅ تخصيص الأزرار
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: accentColor,
+            foregroundColor: backgroundColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+            textStyle: GoogleFonts.manrope(fontSize: 18, fontWeight: FontWeight.w600),
+          ),
+        ),
+
+        // ✅ تخصيص النصوص
         textTheme: TextTheme(
-          bodyLarge: TextStyle(fontSize: 18, color: textColor),
-          bodyMedium: TextStyle(fontSize: 16, color: textColor.withOpacity(0.8)),
-          titleLarge: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: textColor),
+          bodyLarge: GoogleFonts.manrope(fontSize: 18, color: textColor),
+          bodyMedium: GoogleFonts.manrope(fontSize: 16, color: textColor.withOpacity(0.8)),
+          titleLarge: GoogleFonts.manrope(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: textColor,
+          ),
+        ),
+
+        // ✅ تخصيص الكروت
+        cardTheme: CardTheme(
+          color: surfaceColor,
+          elevation: 3,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+
+        // ✅ تخصيص الـ Bottom App Bar
+        bottomAppBarTheme: const BottomAppBarTheme(
+          color: surfaceColor,
+          elevation: 3,
         ),
       );
 }
